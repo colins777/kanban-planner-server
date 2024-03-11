@@ -9,6 +9,7 @@ import { UserService } from "src/user/user.service";
 export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor(
         private configService: ConfigService,
+        //this for not get data directly from DB, we use Service
         private userService: UserService
     ) {
             super({

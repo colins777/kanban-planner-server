@@ -4,7 +4,14 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('user')
+//@Controller()
 export class UserController {
   constructor(private readonly userService: UserService) {}
+
+
+  // @Get()
+  // getHello(): string {
+  //   return 'Hello World! 111';
+  // }
 
 }

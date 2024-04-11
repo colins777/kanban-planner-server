@@ -1,12 +1,16 @@
-import {BadRequestException, Injectable, NotFoundException} from '@nestjs/common';
+import {BadRequestException, Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/user/user.service';
 import { AuthDto } from './dto/auth.dto';
+import {Response, Request} from "express";
 import {verify} from 'argon2';
-//import * as argon2 from "argon2";
 
 @Injectable()
 export class AuthService {
+
+    EXPIRE_DAY_REFRESH_TOKEN = 1
+    REFRESH_TOKEN_NAME = 'refreshToken'
+
     constructor(
         private jwt: JwtService,
         private userService: UserService,
@@ -24,6 +28,8 @@ export class AuthService {
             user,
             ...tokens
         }
+
+        //get response as this https://prnt.sc/inCDEHI6NR3x
     }
 
     async register(dto:AuthDto) {
@@ -40,6 +46,25 @@ export class AuthService {
         return {
             user,
             ...tokens
+        }
+    }
+
+    async getNewTokens(refreshToken: string) {
+        const result = await this.jwt.verifyAsync(refreshToken);
+
+        if (!result) throw new UnauthorizedException('Invalid refresh token')
+
+        //get only user
+        const {password, ...user} = await this.userService.getById(result.id)
+
+        console.log('password', password)
+        console.log('user', user)
+
+        const token = this.issueTokens(user.id)
+
+        return {
+            user,
+            ...token
         }
     }
 
@@ -71,5 +96,42 @@ export class AuthService {
         if(!isValid) throw new NotFoundException('Invalid password');
 
         return user;
+    }
+
+    addRefreshTokenToResponse(res: Response, refreshToken: string) {
+
+        //get current date
+        const expiresIn = new Date();
+        expiresIn.setDate(expiresIn.getDate() + this.EXPIRE_DAY_REFRESH_TOKEN)
+
+        res.cookie(this.REFRESH_TOKEN_NAME, refreshToken, {
+            //it is server cookie
+            httpOnly: true,
+            domain: 'localhost',
+            expires: expiresIn,
+            //if production, HTTPS
+            secure: true,
+            //lax if production
+            sameSite: 'none'
+        })
+    }
+
+
+    removeRefreshTokenFromResponse(res: Response) {
+
+        //get current date
+        const expiresIn = new Date();
+
+        res.cookie(this.REFRESH_TOKEN_NAME, '' , {
+            //it is server cookie
+            httpOnly: true,
+            domain: 'localhost',
+            //if production, HTTPS
+            //there is no f-ty to delete cookie, we can only set null for cookie date
+            expires: new Date(0),
+            secure: true,
+            //lax if production
+            sameSite: 'none'
+        })
     }
 }

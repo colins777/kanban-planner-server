@@ -1,9 +1,9 @@
-import {Injectable, NotFoundException} from '@nestjs/common';
+import {BadRequestException, Injectable, NotFoundException} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/user/user.service';
 import { AuthDto } from './dto/auth.dto';
-//import {verify} from 'argon2'
-import * as argon2 from "argon2";
+import {verify} from 'argon2';
+//import * as argon2 from "argon2";
 
 @Injectable()
 export class AuthService {
@@ -18,6 +18,23 @@ export class AuthService {
         //password is not need if success for security reasons
         //@ts-ignore
         const {password, ...user} = await this.validateUser(dto)
+        const tokens = this.issueTokens(user.id)
+
+        return {
+            user,
+            ...tokens
+        }
+    }
+
+    async register(dto:AuthDto) {
+
+        //check if user exist
+        const existingUser = await this.userService.getByEmail(dto.email);
+
+        if (existingUser) throw new BadRequestException('User already exist');
+
+        const {password, ...user} = await this.userService.create(dto);
+
         const tokens = this.issueTokens(user.id)
 
         return {
@@ -49,12 +66,10 @@ export class AuthService {
         //@ts-ignore
         if(!user) throw new NotFoundException('User not found');
         //@ts-ignore
-        //const isValid = await verify(user.password, dto.password);
-        const isValid = await argon2().verify(user.password, dto.password);
+        const isValid = await verify(user.password, dto.password);
 
         if(!isValid) throw new NotFoundException('Invalid password');
 
         return user;
-
     }
 }

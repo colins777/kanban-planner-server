@@ -106,6 +106,10 @@ constructor (private prisma: PrismaService) {}
         id
       },
       data,
+      select: {
+        name: true,
+        email: true
+      }
     })
   }
 

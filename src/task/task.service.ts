@@ -44,7 +44,7 @@ constructor (private prisma:PrismaService) {}
   }
 
   async delete(taskId:string) {
-    return this.prisma.task.update({
+    return this.prisma.task.delete({
       where: {
         id: taskId
       }

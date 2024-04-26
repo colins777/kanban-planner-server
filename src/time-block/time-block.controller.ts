@@ -13,6 +13,7 @@ import {Auth} from "../auth/decorators/auth.decorator";
 import {CurrentUser} from "../auth/decorators/user.decorator";
 import {TimeBlockDto} from "./dto/time-block.dto";
 import {UpdateOrderDto} from "./dto/update-order.dto"
+import {TaskDto} from "../task/task.dto";
 
 @Controller('user/time-blocks')
 export class TimeBlockController {
@@ -32,6 +33,19 @@ export class TimeBlockController {
 
   async create(@Body() dto: TimeBlockDto, @CurrentUser('id') userId:string) {
     return this.TimeBlockService.create(dto, userId)
+  }
+
+
+  @UsePipes(new ValidationPipe())
+  @HttpCode(200)
+  @Put(':id')
+  @Auth()
+  async update(
+      @Body() dto: TimeBlockDto,
+      @CurrentUser('id') userId:string,
+      @Param('id') id:string
+  ) {
+    return this.TimeBlockService.update(dto, id, userId)
   }
 
   @UsePipes(new ValidationPipe())

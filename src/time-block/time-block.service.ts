@@ -55,6 +55,7 @@ export class TimeBlockService {
   }
 
   //use transaction for optimize DB query to update data
+  //async updateOrder(ids:string[]) {
   async updateOrder(ids:string[]) {
     return this.prisma.$transaction(
       ids.map((id, order) =>

@@ -17,13 +17,13 @@ import {TaskDto} from "../task/task.dto";
 
 @Controller('user/time-blocks')
 export class TimeBlockController {
-  constructor(private readonly TimeBlockService: TimeBlockService) {}
+  constructor(private readonly timeBlockService: TimeBlockService) {}
 
   @Get()
   @Auth()
 
   async getAll(@CurrentUser('id') userId:string) {
-    return this.TimeBlockService.getAll(userId)
+    return this.timeBlockService.getAll(userId)
   }
 
   @UsePipes(new ValidationPipe())
@@ -32,7 +32,7 @@ export class TimeBlockController {
   @Auth()
 
   async create(@Body() dto: TimeBlockDto, @CurrentUser('id') userId:string) {
-    return this.TimeBlockService.create(dto, userId)
+    return this.timeBlockService.create(dto, userId)
   }
 
 
@@ -45,7 +45,7 @@ export class TimeBlockController {
       @CurrentUser('id') userId:string,
       @Param('id') id:string
   ) {
-    return this.TimeBlockService.update(dto, id, userId)
+    return this.timeBlockService.update(dto, id, userId)
   }
 
   @UsePipes(new ValidationPipe())
@@ -54,7 +54,7 @@ export class TimeBlockController {
   @Auth()
 
   async updateOrder(@Body() updateOrderDto: UpdateOrderDto, @CurrentUser('id') userId:string) {
-    return this.TimeBlockService.updateOrder(updateOrderDto.ids)
+    return this.timeBlockService.updateOrder(updateOrderDto.ids)
   }
 
 
@@ -64,7 +64,7 @@ export class TimeBlockController {
   @Auth()
 
   async delete(@CurrentUser('id') userId:string, @Param('id') id:string) {
-    return this.TimeBlockService.delete(id, userId)
+    return this.timeBlockService.delete(id, userId)
   }
 
 }

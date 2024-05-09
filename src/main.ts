@@ -3,26 +3,20 @@ import { AppModule } from './app.module';
 import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+    const app = await NestFactory.create(AppModule);
 
-  //add /api to every request
-  app.setGlobalPrefix('api')
-  app.use(cookieParser())
-  app.enableCors({
-    //port of front end part - client
-    origin: ['http://localhost:3001'],
-     // origin: "*",
-    //credentials: true,app.controller.ts
-    //not required
-    exposedHeaders: 'set-cookie'
+    app.setGlobalPrefix('api');  // Prefix every route with '/api'
+    app.use(cookieParser());     // Middleware for parsing cookies
 
-  })
+    // Enable CORS with specific options
+    app.enableCors({
+        origin: "http://localhost:3000",  // Client's URL without a trailing slash
+        credentials: true,                // Required if you're dealing with cookies
+        exposedHeaders: ['set-cookie'],   // Typically not necessary to expose 'set-cookie'
+    });
 
-  //await app.listen(3000);
- await app.listen(4200);
-
-  console.log(`Application running at ${await app.getUrl()}`)
-
-  //await app.listen(process.env.PORT ? parseInt(process.env.PORT) : 3000);
+    await app.listen(4200);  // Server port
+    console.log(`Application running at ${await app.getUrl()}`);
 }
+
 bootstrap();

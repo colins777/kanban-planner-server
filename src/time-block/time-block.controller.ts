@@ -53,10 +53,13 @@ export class TimeBlockController {
   @Put('update-order')
   @Auth()
 
-  async updateOrder(@Body() updateOrderDto: UpdateOrderDto, @CurrentUser('id') userId:string) {
+  // async updateOrder(@Body() updateOrderDto: UpdateOrderDto, @CurrentUser('id') userId:string) {
+  //   return this.timeBlockService.updateOrder(updateOrderDto.ids)
+  // }
+
+  async updateOrder(@Body() updateOrderDto: UpdateOrderDto) {
     return this.timeBlockService.updateOrder(updateOrderDto.ids)
   }
-
 
   //delete
   @HttpCode(200)

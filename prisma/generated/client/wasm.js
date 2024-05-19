@@ -114,9 +114,9 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   name: 'name',
   password: 'password',
-  workInterval: 'workInterval',
   breakInterval: 'breakInterval',
-  intervalsCount: 'intervalsCount'
+  intervalsCount: 'intervalsCount',
+  workInterval: 'workInterval'
 };
 
 exports.Prisma.TaskScalarFieldEnum = {
@@ -126,6 +126,7 @@ exports.Prisma.TaskScalarFieldEnum = {
   name: 'name',
   priority: 'priority',
   isCompleted: 'isCompleted',
+  totalTime: 'totalTime',
   userId: 'userId'
 };
 
@@ -152,9 +153,9 @@ exports.Prisma.PomodoroRoundScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  totalSeconds: 'totalSeconds',
   isCompleted: 'isCompleted',
-  pomodoroSessionId: 'pomodoroSessionId'
+  pomodoroSessionId: 'pomodoroSessionId',
+  totalSeconds: 'totalSeconds'
 };
 
 exports.Prisma.SortOrder = {

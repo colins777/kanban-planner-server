@@ -158,6 +158,17 @@ exports.Prisma.PomodoroRoundScalarFieldEnum = {
   totalSeconds: 'totalSeconds'
 };
 
+exports.Prisma.TimeSpentTaskScalarFieldEnum = {
+  id: 'id',
+  taskId: 'taskId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  isCompleted: 'isCompleted',
+  additionalData: 'additionalData'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -183,7 +194,8 @@ exports.Prisma.ModelName = {
   Task: 'Task',
   TimeBlock: 'TimeBlock',
   PomodoroSession: 'PomodoroSession',
-  PomodoroRound: 'PomodoroRound'
+  PomodoroRound: 'PomodoroRound',
+  TimeSpentTask: 'TimeSpentTask'
 };
 
 /**

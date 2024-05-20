@@ -36,6 +36,8 @@ model Task {
   userId      String    @map("user_id")
   user        User      @relation(fields: [userId], references: [id])
 
+  timeSpentTasks TimeSpentTask[]
+
   @@map("task")
 }
 
@@ -75,6 +77,20 @@ model PomodoroRound {
   pomodoroSession   PomodoroSession @relation(fields: [pomodoroSessionId], references: [id], onDelete: Cascade)
 
   @@map("pomodoro_round")
+}
+
+model TimeSpentTask {
+        id             String   @id @default(cuid())
+        taskId         String   @map("task_id")
+        createdAt      DateTime @default(now()) @map("created_at")
+        updatedAt      DateTime @updatedAt @map("updated_at")
+        startTime      DateTime @map("start_time")
+        endTime        DateTime @map("end_time")
+        isCompleted    Boolean? @default(false) @map("is_completed")
+        additionalData String   @map("additional_data")
+        task           Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+        @@map("time_spent_task")
 }
 
 enum Priority {

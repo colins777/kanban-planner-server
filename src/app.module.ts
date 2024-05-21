@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import {TaskModule} from "./task/task.module";
 import {TimeBlockModule} from "./time-block/time-block.module";
 import {TimerModule} from "./timer/timer.module";
+import {TaskSpentTimeModule} from "./task-spent-time/task-spent-time.module";
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import {TimerModule} from "./timer/timer.module";
     UserModule,
     TaskModule,
     TimeBlockModule,
-    TimerModule
+    TimerModule,
+    TaskSpentTimeModule
   ],
 
 })

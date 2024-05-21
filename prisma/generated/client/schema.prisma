@@ -85,9 +85,9 @@ model TimeSpentTask {
         createdAt      DateTime @default(now()) @map("created_at")
         updatedAt      DateTime @updatedAt @map("updated_at")
         startTime      DateTime @map("start_time")
-        endTime        DateTime @map("end_time")
+        endTime        DateTime? @map("end_time")
         isCompleted    Boolean? @default(false) @map("is_completed")
-        additionalData String   @map("additional_data")
+        additionalData String?   @map("additional_data")
         task           Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
 
         @@map("time_spent_task")

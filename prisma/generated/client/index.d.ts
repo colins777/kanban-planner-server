@@ -6562,9 +6562,9 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     startTime: Date
-    endTime: Date
+    endTime: Date | null
     isCompleted: boolean | null
-    additionalData: string
+    additionalData: string | null
     _count: TimeSpentTaskCountAggregateOutputType | null
     _min: TimeSpentTaskMinAggregateOutputType | null
     _max: TimeSpentTaskMaxAggregateOutputType | null
@@ -6623,9 +6623,9 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       startTime: Date
-      endTime: Date
+      endTime: Date | null
       isCompleted: boolean | null
-      additionalData: string
+      additionalData: string | null
     }, ExtArgs["result"]["timeSpentTask"]>
     composites: {}
   }
@@ -7918,9 +7918,9 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TimeSpentTask"> | Date | string
     updatedAt?: DateTimeFilter<"TimeSpentTask"> | Date | string
     startTime?: DateTimeFilter<"TimeSpentTask"> | Date | string
-    endTime?: DateTimeFilter<"TimeSpentTask"> | Date | string
+    endTime?: DateTimeNullableFilter<"TimeSpentTask"> | Date | string | null
     isCompleted?: BoolNullableFilter<"TimeSpentTask"> | boolean | null
-    additionalData?: StringFilter<"TimeSpentTask"> | string
+    additionalData?: StringNullableFilter<"TimeSpentTask"> | string | null
     task?: XOR<TaskRelationFilter, TaskWhereInput>
   }
 
@@ -7930,9 +7930,9 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     startTime?: SortOrder
-    endTime?: SortOrder
+    endTime?: SortOrderInput | SortOrder
     isCompleted?: SortOrderInput | SortOrder
-    additionalData?: SortOrder
+    additionalData?: SortOrderInput | SortOrder
     task?: TaskOrderByWithRelationInput
   }
 
@@ -7945,9 +7945,9 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TimeSpentTask"> | Date | string
     updatedAt?: DateTimeFilter<"TimeSpentTask"> | Date | string
     startTime?: DateTimeFilter<"TimeSpentTask"> | Date | string
-    endTime?: DateTimeFilter<"TimeSpentTask"> | Date | string
+    endTime?: DateTimeNullableFilter<"TimeSpentTask"> | Date | string | null
     isCompleted?: BoolNullableFilter<"TimeSpentTask"> | boolean | null
-    additionalData?: StringFilter<"TimeSpentTask"> | string
+    additionalData?: StringNullableFilter<"TimeSpentTask"> | string | null
     task?: XOR<TaskRelationFilter, TaskWhereInput>
   }, "id">
 
@@ -7957,9 +7957,9 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     startTime?: SortOrder
-    endTime?: SortOrder
+    endTime?: SortOrderInput | SortOrder
     isCompleted?: SortOrderInput | SortOrder
-    additionalData?: SortOrder
+    additionalData?: SortOrderInput | SortOrder
     _count?: TimeSpentTaskCountOrderByAggregateInput
     _max?: TimeSpentTaskMaxOrderByAggregateInput
     _min?: TimeSpentTaskMinOrderByAggregateInput
@@ -7974,9 +7974,9 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"TimeSpentTask"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"TimeSpentTask"> | Date | string
     startTime?: DateTimeWithAggregatesFilter<"TimeSpentTask"> | Date | string
-    endTime?: DateTimeWithAggregatesFilter<"TimeSpentTask"> | Date | string
+    endTime?: DateTimeNullableWithAggregatesFilter<"TimeSpentTask"> | Date | string | null
     isCompleted?: BoolNullableWithAggregatesFilter<"TimeSpentTask"> | boolean | null
-    additionalData?: StringWithAggregatesFilter<"TimeSpentTask"> | string
+    additionalData?: StringNullableWithAggregatesFilter<"TimeSpentTask"> | string | null
   }
 
   export type UserCreateInput = {
@@ -8357,9 +8357,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     startTime: Date | string
-    endTime: Date | string
+    endTime?: Date | string | null
     isCompleted?: boolean | null
-    additionalData: string
+    additionalData?: string | null
     task: TaskCreateNestedOneWithoutTimeSpentTasksInput
   }
 
@@ -8369,9 +8369,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     startTime: Date | string
-    endTime: Date | string
+    endTime?: Date | string | null
     isCompleted?: boolean | null
-    additionalData: string
+    additionalData?: string | null
   }
 
   export type TimeSpentTaskUpdateInput = {
@@ -8379,9 +8379,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    additionalData?: StringFieldUpdateOperationsInput | string
+    additionalData?: NullableStringFieldUpdateOperationsInput | string | null
     task?: TaskUpdateOneRequiredWithoutTimeSpentTasksNestedInput
   }
 
@@ -8391,9 +8391,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    additionalData?: StringFieldUpdateOperationsInput | string
+    additionalData?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TimeSpentTaskCreateManyInput = {
@@ -8402,9 +8402,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     startTime: Date | string
-    endTime: Date | string
+    endTime?: Date | string | null
     isCompleted?: boolean | null
-    additionalData: string
+    additionalData?: string | null
   }
 
   export type TimeSpentTaskUpdateManyMutationInput = {
@@ -8412,9 +8412,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    additionalData?: StringFieldUpdateOperationsInput | string
+    additionalData?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TimeSpentTaskUncheckedUpdateManyInput = {
@@ -8423,9 +8423,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    additionalData?: StringFieldUpdateOperationsInput | string
+    additionalData?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -8859,6 +8859,17 @@ export namespace Prisma {
     totalSeconds?: SortOrder
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type TaskRelationFilter = {
     is?: TaskWhereInput
     isNot?: TaskWhereInput
@@ -8895,6 +8906,20 @@ export namespace Prisma {
     endTime?: SortOrder
     isCompleted?: SortOrder
     additionalData?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type PomodoroSessionCreateNestedManyWithoutUserInput = {
@@ -9205,6 +9230,10 @@ export namespace Prisma {
     connect?: TaskWhereUniqueInput
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type TaskUpdateOneRequiredWithoutTimeSpentTasksNestedInput = {
     create?: XOR<TaskCreateWithoutTimeSpentTasksInput, TaskUncheckedCreateWithoutTimeSpentTasksInput>
     connectOrCreate?: TaskCreateOrConnectWithoutTimeSpentTasksInput
@@ -9404,6 +9433,31 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type PomodoroSessionCreateWithoutUserInput = {
@@ -9619,9 +9673,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     startTime: Date | string
-    endTime: Date | string
+    endTime?: Date | string | null
     isCompleted?: boolean | null
-    additionalData: string
+    additionalData?: string | null
   }
 
   export type TimeSpentTaskUncheckedCreateWithoutTaskInput = {
@@ -9629,9 +9683,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     startTime: Date | string
-    endTime: Date | string
+    endTime?: Date | string | null
     isCompleted?: boolean | null
-    additionalData: string
+    additionalData?: string | null
   }
 
   export type TimeSpentTaskCreateOrConnectWithoutTaskInput = {
@@ -9708,9 +9762,9 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TimeSpentTask"> | Date | string
     updatedAt?: DateTimeFilter<"TimeSpentTask"> | Date | string
     startTime?: DateTimeFilter<"TimeSpentTask"> | Date | string
-    endTime?: DateTimeFilter<"TimeSpentTask"> | Date | string
+    endTime?: DateTimeNullableFilter<"TimeSpentTask"> | Date | string | null
     isCompleted?: BoolNullableFilter<"TimeSpentTask"> | boolean | null
-    additionalData?: StringFilter<"TimeSpentTask"> | string
+    additionalData?: StringNullableFilter<"TimeSpentTask"> | string | null
   }
 
   export type UserCreateWithoutTimeBlocksInput = {
@@ -10136,9 +10190,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     startTime: Date | string
-    endTime: Date | string
+    endTime?: Date | string | null
     isCompleted?: boolean | null
-    additionalData: string
+    additionalData?: string | null
   }
 
   export type TimeSpentTaskUpdateWithoutTaskInput = {
@@ -10146,9 +10200,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    additionalData?: StringFieldUpdateOperationsInput | string
+    additionalData?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TimeSpentTaskUncheckedUpdateWithoutTaskInput = {
@@ -10156,9 +10210,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    additionalData?: StringFieldUpdateOperationsInput | string
+    additionalData?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TimeSpentTaskUncheckedUpdateManyWithoutTaskInput = {
@@ -10166,9 +10220,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    additionalData?: StringFieldUpdateOperationsInput | string
+    additionalData?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PomodoroRoundCreateManyPomodoroSessionInput = {

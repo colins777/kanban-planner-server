@@ -33,7 +33,8 @@ export class TaskSpentTimeService {
   //id - time block
   async update(
                id:string,
-               dto:Partial<TaskSpentTimeDto>
+               //dto:Partial<TaskSpentTimeDto>
+               dto:TaskSpentTimeDto
   ) {
     return this.prisma.timeSpentTask.update({
       where: {

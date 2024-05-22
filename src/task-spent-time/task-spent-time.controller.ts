@@ -34,7 +34,7 @@ export class TaskSpentTimeController {
 
   async create(@Body() dto: TaskSpentTimeDto) {
 
-    console.log('spent task time - dto controller: ', dto)
+    //console.log('spent task time - dto controller: ', dto)
 
     return this.taskSpentTimeService.create(dto)
   }
@@ -56,11 +56,13 @@ export class TaskSpentTimeController {
   @HttpCode(200)
   @Put(':id')
   @Auth()
-  async update(
-      @Body() dto: TaskSpentTimeDto,
-      //@CurrentUser('id') userId:string,
-      @Param('id') id:string
+  async update(@Param('id') id:string,
+               @Body() dto: TaskSpentTimeDto
   ) {
+    console.log('update time block ID: ', id)
+    console.log('update dto: ', dto)
+
+
     return this.taskSpentTimeService.update(id, dto)
   }
 

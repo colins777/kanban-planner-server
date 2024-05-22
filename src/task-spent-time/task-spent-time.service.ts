@@ -36,12 +36,21 @@ export class TaskSpentTimeService {
                //dto:Partial<TaskSpentTimeDto>
                dto:TaskSpentTimeDto
   ) {
-    return this.prisma.timeSpentTask.update({
-      where: {
-        id,
-      },
-      data: dto
-    })
+
+    console.log('server id', id)
+    console.log('server dto', dto)
+
+    try {
+      return this.prisma.timeSpentTask.update({
+        where: {
+          id,
+        },
+        data: dto
+      })
+    } catch (e) {
+      console.log('ERROR timeSpentTask.update', e)
+    }
+
   }
 
 /*  async delete(timeBlockId:string, userId:string) {

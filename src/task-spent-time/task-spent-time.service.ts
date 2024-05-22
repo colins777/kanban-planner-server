@@ -1,22 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import {TaskSpentTimeDto} from "./dto/task-spent-time.dto";
-import {TaskDto} from "../task/task.dto";
 
 @Injectable()
 export class TaskSpentTimeService {
   constructor (private prisma:PrismaService) {}
 
-  //async getAll(userId: string) {
-    //return  this.prisma.timeSpentTask.findMany({
-    //   where: {
-    //     userId
-    //   },
-    //   orderBy: {
-    //     order: 'asc'
-    //   }
-    // })
-  //}
+  async getAll(taskId: string) {
+    return  this.prisma.timeSpentTask.findMany({
+      where: {
+        taskId
+      }
+    })
+  }
 
   async create(dto: TaskSpentTimeDto) {
 
@@ -33,22 +29,21 @@ export class TaskSpentTimeService {
     });
   }
 
-  /*async update(
-               dto:Partial<TaskSpentTimeDto>,
-               timeBlockId:string,
-               userId:string
+  //update spent time task block
+  //id - time block
+  async update(
+               id:string,
+               dto:Partial<TaskSpentTimeDto>
   ) {
-    return this.prisma.timeBlock.update({
+    return this.prisma.timeSpentTask.update({
       where: {
-        userId,
-        id: timeBlockId
+        id,
       },
-      //update
       data: dto
     })
   }
 
-  async delete(timeBlockId:string, userId:string) {
+/*  async delete(timeBlockId:string, userId:string) {
     return this.prisma.timeBlock.delete({
       where: {
         id: timeBlockId,

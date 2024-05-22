@@ -18,12 +18,14 @@ import {TaskSpentTimeDto} from "./dto/task-spent-time.dto";
 export class TaskSpentTimeController {
   constructor(private readonly taskSpentTimeService: TaskSpentTimeService) {}
 
-  // @Get()
-  // @Auth()
-  //
-  // async getAll(@CurrentUser('id') userId:string) {
-  //   return this.taskSpentTimeService.getAll(userId)
-  // }
+  @Get()
+  @Auth()
+  async getAll(@Body() dto: TaskSpentTimeDto) {
+
+    console.log('taskId', dto.taskId)
+
+    return this.taskSpentTimeService.getAll(dto.taskId)
+  }
 
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
@@ -32,11 +34,7 @@ export class TaskSpentTimeController {
 
   async create(@Body() dto: TaskSpentTimeDto) {
 
-
     console.log('spent task time - dto controller: ', dto)
-
-   // Logger.debug(`Creating task spent time with DTO: ${JSON.stringify(dto)}`);
-
 
     return this.taskSpentTimeService.create(dto)
   }
@@ -52,9 +50,21 @@ export class TaskSpentTimeController {
       @Param('id') id:string
   ) {
     return this.taskSpentTimeService.update(dto, id, userId)
-  }
+  }*/
 
   @UsePipes(new ValidationPipe())
+  @HttpCode(200)
+  @Put(':id')
+  @Auth()
+  async update(
+      @Body() dto: TaskSpentTimeDto,
+      //@CurrentUser('id') userId:string,
+      @Param('id') id:string
+  ) {
+    return this.taskSpentTimeService.update(id, dto)
+  }
+
+/*  @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Put('update-order')
   @Auth()
@@ -64,7 +74,7 @@ export class TaskSpentTimeController {
     return this.taskSpentTimeService.updateOrder(updateOrderDto.ids)
   }
 
-  \
+
   @HttpCode(200)
   @Delete(':id')
   @Auth()

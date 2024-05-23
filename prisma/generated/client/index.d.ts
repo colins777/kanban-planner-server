@@ -6411,8 +6411,18 @@ export namespace Prisma {
 
   export type AggregateTimeSpentTask = {
     _count: TimeSpentTaskCountAggregateOutputType | null
+    _avg: TimeSpentTaskAvgAggregateOutputType | null
+    _sum: TimeSpentTaskSumAggregateOutputType | null
     _min: TimeSpentTaskMinAggregateOutputType | null
     _max: TimeSpentTaskMaxAggregateOutputType | null
+  }
+
+  export type TimeSpentTaskAvgAggregateOutputType = {
+    totalTime: number | null
+  }
+
+  export type TimeSpentTaskSumAggregateOutputType = {
+    totalTime: number | null
   }
 
   export type TimeSpentTaskMinAggregateOutputType = {
@@ -6422,6 +6432,7 @@ export namespace Prisma {
     updatedAt: Date | null
     startTime: Date | null
     endTime: Date | null
+    totalTime: number | null
     isCompleted: boolean | null
     additionalData: string | null
   }
@@ -6433,6 +6444,7 @@ export namespace Prisma {
     updatedAt: Date | null
     startTime: Date | null
     endTime: Date | null
+    totalTime: number | null
     isCompleted: boolean | null
     additionalData: string | null
   }
@@ -6444,11 +6456,20 @@ export namespace Prisma {
     updatedAt: number
     startTime: number
     endTime: number
+    totalTime: number
     isCompleted: number
     additionalData: number
     _all: number
   }
 
+
+  export type TimeSpentTaskAvgAggregateInputType = {
+    totalTime?: true
+  }
+
+  export type TimeSpentTaskSumAggregateInputType = {
+    totalTime?: true
+  }
 
   export type TimeSpentTaskMinAggregateInputType = {
     id?: true
@@ -6457,6 +6478,7 @@ export namespace Prisma {
     updatedAt?: true
     startTime?: true
     endTime?: true
+    totalTime?: true
     isCompleted?: true
     additionalData?: true
   }
@@ -6468,6 +6490,7 @@ export namespace Prisma {
     updatedAt?: true
     startTime?: true
     endTime?: true
+    totalTime?: true
     isCompleted?: true
     additionalData?: true
   }
@@ -6479,6 +6502,7 @@ export namespace Prisma {
     updatedAt?: true
     startTime?: true
     endTime?: true
+    totalTime?: true
     isCompleted?: true
     additionalData?: true
     _all?: true
@@ -6522,6 +6546,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: TimeSpentTaskAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TimeSpentTaskSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: TimeSpentTaskMinAggregateInputType
@@ -6552,6 +6588,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: TimeSpentTaskCountAggregateInputType | true
+    _avg?: TimeSpentTaskAvgAggregateInputType
+    _sum?: TimeSpentTaskSumAggregateInputType
     _min?: TimeSpentTaskMinAggregateInputType
     _max?: TimeSpentTaskMaxAggregateInputType
   }
@@ -6563,9 +6601,12 @@ export namespace Prisma {
     updatedAt: Date
     startTime: Date
     endTime: Date | null
+    totalTime: number | null
     isCompleted: boolean | null
     additionalData: string | null
     _count: TimeSpentTaskCountAggregateOutputType | null
+    _avg: TimeSpentTaskAvgAggregateOutputType | null
+    _sum: TimeSpentTaskSumAggregateOutputType | null
     _min: TimeSpentTaskMinAggregateOutputType | null
     _max: TimeSpentTaskMaxAggregateOutputType | null
   }
@@ -6591,6 +6632,7 @@ export namespace Prisma {
     updatedAt?: boolean
     startTime?: boolean
     endTime?: boolean
+    totalTime?: boolean
     isCompleted?: boolean
     additionalData?: boolean
     task?: boolean | TaskDefaultArgs<ExtArgs>
@@ -6603,6 +6645,7 @@ export namespace Prisma {
     updatedAt?: boolean
     startTime?: boolean
     endTime?: boolean
+    totalTime?: boolean
     isCompleted?: boolean
     additionalData?: boolean
   }
@@ -6624,6 +6667,7 @@ export namespace Prisma {
       updatedAt: Date
       startTime: Date
       endTime: Date | null
+      totalTime: number | null
       isCompleted: boolean | null
       additionalData: string | null
     }, ExtArgs["result"]["timeSpentTask"]>
@@ -7027,6 +7071,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"TimeSpentTask", 'DateTime'>
     readonly startTime: FieldRef<"TimeSpentTask", 'DateTime'>
     readonly endTime: FieldRef<"TimeSpentTask", 'DateTime'>
+    readonly totalTime: FieldRef<"TimeSpentTask", 'Int'>
     readonly isCompleted: FieldRef<"TimeSpentTask", 'Boolean'>
     readonly additionalData: FieldRef<"TimeSpentTask", 'String'>
   }
@@ -7443,6 +7488,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     startTime: 'startTime',
     endTime: 'endTime',
+    totalTime: 'totalTime',
     isCompleted: 'isCompleted',
     additionalData: 'additionalData'
   };
@@ -7919,6 +7965,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"TimeSpentTask"> | Date | string
     startTime?: DateTimeFilter<"TimeSpentTask"> | Date | string
     endTime?: DateTimeNullableFilter<"TimeSpentTask"> | Date | string | null
+    totalTime?: IntNullableFilter<"TimeSpentTask"> | number | null
     isCompleted?: BoolNullableFilter<"TimeSpentTask"> | boolean | null
     additionalData?: StringNullableFilter<"TimeSpentTask"> | string | null
     task?: XOR<TaskRelationFilter, TaskWhereInput>
@@ -7931,6 +7978,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     startTime?: SortOrder
     endTime?: SortOrderInput | SortOrder
+    totalTime?: SortOrderInput | SortOrder
     isCompleted?: SortOrderInput | SortOrder
     additionalData?: SortOrderInput | SortOrder
     task?: TaskOrderByWithRelationInput
@@ -7946,6 +7994,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"TimeSpentTask"> | Date | string
     startTime?: DateTimeFilter<"TimeSpentTask"> | Date | string
     endTime?: DateTimeNullableFilter<"TimeSpentTask"> | Date | string | null
+    totalTime?: IntNullableFilter<"TimeSpentTask"> | number | null
     isCompleted?: BoolNullableFilter<"TimeSpentTask"> | boolean | null
     additionalData?: StringNullableFilter<"TimeSpentTask"> | string | null
     task?: XOR<TaskRelationFilter, TaskWhereInput>
@@ -7958,11 +8007,14 @@ export namespace Prisma {
     updatedAt?: SortOrder
     startTime?: SortOrder
     endTime?: SortOrderInput | SortOrder
+    totalTime?: SortOrderInput | SortOrder
     isCompleted?: SortOrderInput | SortOrder
     additionalData?: SortOrderInput | SortOrder
     _count?: TimeSpentTaskCountOrderByAggregateInput
+    _avg?: TimeSpentTaskAvgOrderByAggregateInput
     _max?: TimeSpentTaskMaxOrderByAggregateInput
     _min?: TimeSpentTaskMinOrderByAggregateInput
+    _sum?: TimeSpentTaskSumOrderByAggregateInput
   }
 
   export type TimeSpentTaskScalarWhereWithAggregatesInput = {
@@ -7975,6 +8027,7 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"TimeSpentTask"> | Date | string
     startTime?: DateTimeWithAggregatesFilter<"TimeSpentTask"> | Date | string
     endTime?: DateTimeNullableWithAggregatesFilter<"TimeSpentTask"> | Date | string | null
+    totalTime?: IntNullableWithAggregatesFilter<"TimeSpentTask"> | number | null
     isCompleted?: BoolNullableWithAggregatesFilter<"TimeSpentTask"> | boolean | null
     additionalData?: StringNullableWithAggregatesFilter<"TimeSpentTask"> | string | null
   }
@@ -8358,6 +8411,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     startTime: Date | string
     endTime?: Date | string | null
+    totalTime?: number | null
     isCompleted?: boolean | null
     additionalData?: string | null
     task: TaskCreateNestedOneWithoutTimeSpentTasksInput
@@ -8370,6 +8424,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     startTime: Date | string
     endTime?: Date | string | null
+    totalTime?: number | null
     isCompleted?: boolean | null
     additionalData?: string | null
   }
@@ -8380,6 +8435,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalTime?: NullableIntFieldUpdateOperationsInput | number | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     additionalData?: NullableStringFieldUpdateOperationsInput | string | null
     task?: TaskUpdateOneRequiredWithoutTimeSpentTasksNestedInput
@@ -8392,6 +8448,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalTime?: NullableIntFieldUpdateOperationsInput | number | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     additionalData?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -8403,6 +8460,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     startTime: Date | string
     endTime?: Date | string | null
+    totalTime?: number | null
     isCompleted?: boolean | null
     additionalData?: string | null
   }
@@ -8413,6 +8471,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalTime?: NullableIntFieldUpdateOperationsInput | number | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     additionalData?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -8424,6 +8483,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalTime?: NullableIntFieldUpdateOperationsInput | number | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     additionalData?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -8882,8 +8942,13 @@ export namespace Prisma {
     updatedAt?: SortOrder
     startTime?: SortOrder
     endTime?: SortOrder
+    totalTime?: SortOrder
     isCompleted?: SortOrder
     additionalData?: SortOrder
+  }
+
+  export type TimeSpentTaskAvgOrderByAggregateInput = {
+    totalTime?: SortOrder
   }
 
   export type TimeSpentTaskMaxOrderByAggregateInput = {
@@ -8893,6 +8958,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     startTime?: SortOrder
     endTime?: SortOrder
+    totalTime?: SortOrder
     isCompleted?: SortOrder
     additionalData?: SortOrder
   }
@@ -8904,8 +8970,13 @@ export namespace Prisma {
     updatedAt?: SortOrder
     startTime?: SortOrder
     endTime?: SortOrder
+    totalTime?: SortOrder
     isCompleted?: SortOrder
     additionalData?: SortOrder
+  }
+
+  export type TimeSpentTaskSumOrderByAggregateInput = {
+    totalTime?: SortOrder
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -9674,6 +9745,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     startTime: Date | string
     endTime?: Date | string | null
+    totalTime?: number | null
     isCompleted?: boolean | null
     additionalData?: string | null
   }
@@ -9684,6 +9756,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     startTime: Date | string
     endTime?: Date | string | null
+    totalTime?: number | null
     isCompleted?: boolean | null
     additionalData?: string | null
   }
@@ -9763,6 +9836,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"TimeSpentTask"> | Date | string
     startTime?: DateTimeFilter<"TimeSpentTask"> | Date | string
     endTime?: DateTimeNullableFilter<"TimeSpentTask"> | Date | string | null
+    totalTime?: IntNullableFilter<"TimeSpentTask"> | number | null
     isCompleted?: BoolNullableFilter<"TimeSpentTask"> | boolean | null
     additionalData?: StringNullableFilter<"TimeSpentTask"> | string | null
   }
@@ -10191,6 +10265,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     startTime: Date | string
     endTime?: Date | string | null
+    totalTime?: number | null
     isCompleted?: boolean | null
     additionalData?: string | null
   }
@@ -10201,6 +10276,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalTime?: NullableIntFieldUpdateOperationsInput | number | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     additionalData?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -10211,6 +10287,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalTime?: NullableIntFieldUpdateOperationsInput | number | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     additionalData?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -10221,6 +10298,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startTime?: DateTimeFieldUpdateOperationsInput | Date | string
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalTime?: NullableIntFieldUpdateOperationsInput | number | null
     isCompleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     additionalData?: NullableStringFieldUpdateOperationsInput | string | null
   }

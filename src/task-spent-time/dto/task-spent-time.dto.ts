@@ -13,6 +13,10 @@ export class TaskSpentTimeDto {
     @IsOptional()
     endTime?: string
 
+    @IsNumber()
+    @IsOptional()
+    totalTime?: number
+
     @IsBoolean()
     @IsOptional()
     isCompleted?: boolean

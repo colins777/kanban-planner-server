@@ -165,6 +165,7 @@ exports.Prisma.TimeSpentTaskScalarFieldEnum = {
   updatedAt: 'updatedAt',
   startTime: 'startTime',
   endTime: 'endTime',
+  totalTime: 'totalTime',
   isCompleted: 'isCompleted',
   additionalData: 'additionalData'
 };

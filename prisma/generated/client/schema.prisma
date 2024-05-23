@@ -80,15 +80,16 @@ model PomodoroRound {
 }
 
 model TimeSpentTask {
-        id             String   @id @default(cuid())
-        taskId         String   @map("task_id")
-        createdAt      DateTime @default(now()) @map("created_at")
-        updatedAt      DateTime @updatedAt @map("updated_at")
-        startTime      DateTime @map("start_time")
+        id             String    @id @default(cuid())
+        taskId         String    @map("task_id")
+        createdAt      DateTime  @default(now()) @map("created_at")
+        updatedAt      DateTime  @updatedAt @map("updated_at")
+        startTime      DateTime  @map("start_time")
         endTime        DateTime? @map("end_time")
-        isCompleted    Boolean? @default(false) @map("is_completed")
+        totalTime      Int?      @map("total_time")
+        isCompleted    Boolean?  @default(false) @map("is_completed")
         additionalData String?   @map("additional_data")
-        task           Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+        task           Task      @relation(fields: [taskId], references: [id], onDelete: Cascade)
 
         @@map("time_spent_task")
 }

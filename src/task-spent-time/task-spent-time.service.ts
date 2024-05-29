@@ -20,12 +20,13 @@ export class TaskSpentTimeService {
 
     return this.prisma.timeSpentTask.create({
       data: {
-        taskId: dto?.taskId,
-        startTime: new Date(dto?.startTime),
-        endTime: dto?.endTime ? new Date(dto.endTime) : '',
-        totalTime: dto?.totalTime,
-        isCompleted: dto?.isCompleted,
-        additionalData: dto?.additionalData
+        // taskId: dto?.taskId,
+        // startTime: new Date(dto?.startTime),
+        // endTime: dto?.endTime ? new Date(dto.endTime) : '',
+        // totalTime: dto?.totalTime,
+        // isCompleted: dto?.isCompleted,
+        // additionalData: dto?.additionalData
+        ...dto
       },
     });
   }

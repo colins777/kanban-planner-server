@@ -32,7 +32,7 @@ export class TaskSpentTimeService {
   }
 
   //update spent time task block
-  //id - time block
+  //id - time block id
   async update(
                id:string,
                userId:string,

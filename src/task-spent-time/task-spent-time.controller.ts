@@ -56,14 +56,16 @@ export class TaskSpentTimeController {
   @HttpCode(200)
   @Put(':id')
   @Auth()
+
   async update(@Param('id') id:string,
-               @Body() dto: TaskSpentTimeDto
+               @CurrentUser('id') userId:string,
+               @Body() dto: TaskSpentTimeDto,
   ) {
     console.log('update time block ID: ', id)
     console.log('update dto: ', dto)
 
 
-    return this.taskSpentTimeService.update(id, dto)
+    return this.taskSpentTimeService.update(id, userId, dto)
   }
 
 /*  @UsePipes(new ValidationPipe())

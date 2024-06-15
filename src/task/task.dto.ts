@@ -1,4 +1,4 @@
-import {IsBoolean, IsEmail, IsEnum, IsOptional, IsString} from "class-validator";
+import {IsBoolean, IsEmail, IsEnum, IsNumber, IsOptional, IsString} from "class-validator";
 import {Priority} from 'prisma/generated/client'
 import {Transform} from "class-transformer";
 
@@ -8,7 +8,6 @@ export class TaskDto {
         console.log('Priority', Priority)
     }
 
-
     @IsString()
     @IsOptional()
     name: string
@@ -16,6 +15,10 @@ export class TaskDto {
     @IsBoolean()
     @IsOptional()
     isCompleted?: boolean
+
+    @IsNumber()
+    @IsOptional()
+    totalTime?: number
 
     @IsString()
     @IsOptional()

@@ -35,8 +35,9 @@ export class TaskSpentTimeService {
   //id - time block
   async update(
                id:string,
+               userId:string,
                //dto:Partial<TaskSpentTimeDto>
-               dto:TaskSpentTimeDto
+               dto:TaskSpentTimeDto,
   ) {
 
     console.log('server id', id)
@@ -49,32 +50,41 @@ export class TaskSpentTimeService {
         },
         data: dto
       })
+      .then(async () => {
+
+        const totalTime = await this.getTotalTime(dto.taskId);
+
+        console.log('getTotalTime', totalTime)
+
+        //update task total time in table task!!!
+        return this.prisma.task.update({
+          where: {
+            userId,
+            id: dto.taskId
+          },
+          data: {
+            totalTime
+          }
+        })
+      })
     } catch (e) {
       console.log('ERROR timeSpentTask.update', e)
     }
-
   }
 
-/*  async delete(timeBlockId:string, userId:string) {
-    return this.prisma.timeBlock.delete({
+  async getTotalTime(taskId) {
+
+    let taskTimeBlocks = await this.prisma.timeSpentTask.findMany({
       where: {
-        id: timeBlockId,
-        userId
+        taskId
       }
+    });
+
+    let taskTotalTime = 0
+    taskTimeBlocks.map((item) => {
+      return taskTotalTime += item.totalTime
     })
+
+    return taskTotalTime
   }
-
-  //use transaction for optimize DB query to update data
-  //async updateOrder(ids:string[]) {
-  async updateOrder(ids: string[]) {
-    return this.prisma.$transaction(
-        ids.map((id, order) =>
-            this.prisma.timeBlock.update({
-              where: { id },
-              data: { order }
-            })
-        )
-    )
-  }*/
-
 }

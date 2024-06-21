@@ -1449,6 +1449,7 @@ export namespace Prisma {
     breakInterval: number | null
     intervalsCount: number | null
     workInterval: number | null
+    taskBlockRound: boolean | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1461,6 +1462,7 @@ export namespace Prisma {
     breakInterval: number | null
     intervalsCount: number | null
     workInterval: number | null
+    taskBlockRound: boolean | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1473,6 +1475,7 @@ export namespace Prisma {
     breakInterval: number
     intervalsCount: number
     workInterval: number
+    taskBlockRound: number
     _all: number
   }
 
@@ -1499,6 +1502,7 @@ export namespace Prisma {
     breakInterval?: true
     intervalsCount?: true
     workInterval?: true
+    taskBlockRound?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1511,6 +1515,7 @@ export namespace Prisma {
     breakInterval?: true
     intervalsCount?: true
     workInterval?: true
+    taskBlockRound?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1523,6 +1528,7 @@ export namespace Prisma {
     breakInterval?: true
     intervalsCount?: true
     workInterval?: true
+    taskBlockRound?: true
     _all?: true
   }
 
@@ -1622,6 +1628,7 @@ export namespace Prisma {
     breakInterval: number | null
     intervalsCount: number | null
     workInterval: number | null
+    taskBlockRound: boolean | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1653,6 +1660,7 @@ export namespace Prisma {
     breakInterval?: boolean
     intervalsCount?: boolean
     workInterval?: boolean
+    taskBlockRound?: boolean
     pomodoroSessions?: boolean | User$pomodoroSessionsArgs<ExtArgs>
     tasks?: boolean | User$tasksArgs<ExtArgs>
     timeBlocks?: boolean | User$timeBlocksArgs<ExtArgs>
@@ -1669,6 +1677,7 @@ export namespace Prisma {
     breakInterval?: boolean
     intervalsCount?: boolean
     workInterval?: boolean
+    taskBlockRound?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1696,6 +1705,7 @@ export namespace Prisma {
       breakInterval: number | null
       intervalsCount: number | null
       workInterval: number | null
+      taskBlockRound: boolean | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2104,6 +2114,7 @@ export namespace Prisma {
     readonly breakInterval: FieldRef<"User", 'Int'>
     readonly intervalsCount: FieldRef<"User", 'Int'>
     readonly workInterval: FieldRef<"User", 'Int'>
+    readonly taskBlockRound: FieldRef<"User", 'Boolean'>
   }
     
 
@@ -7424,7 +7435,8 @@ export namespace Prisma {
     password: 'password',
     breakInterval: 'breakInterval',
     intervalsCount: 'intervalsCount',
-    workInterval: 'workInterval'
+    workInterval: 'workInterval',
+    taskBlockRound: 'taskBlockRound'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -7568,6 +7580,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Priority'
    */
   export type EnumPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Priority'>
@@ -7578,13 +7597,6 @@ export namespace Prisma {
    * Reference to a field of type 'Priority[]'
    */
   export type ListEnumPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Priority[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -7618,6 +7630,7 @@ export namespace Prisma {
     breakInterval?: IntNullableFilter<"User"> | number | null
     intervalsCount?: IntNullableFilter<"User"> | number | null
     workInterval?: IntNullableFilter<"User"> | number | null
+    taskBlockRound?: BoolNullableFilter<"User"> | boolean | null
     pomodoroSessions?: PomodoroSessionListRelationFilter
     tasks?: TaskListRelationFilter
     timeBlocks?: TimeBlockListRelationFilter
@@ -7633,6 +7646,7 @@ export namespace Prisma {
     breakInterval?: SortOrderInput | SortOrder
     intervalsCount?: SortOrderInput | SortOrder
     workInterval?: SortOrderInput | SortOrder
+    taskBlockRound?: SortOrderInput | SortOrder
     pomodoroSessions?: PomodoroSessionOrderByRelationAggregateInput
     tasks?: TaskOrderByRelationAggregateInput
     timeBlocks?: TimeBlockOrderByRelationAggregateInput
@@ -7651,6 +7665,7 @@ export namespace Prisma {
     breakInterval?: IntNullableFilter<"User"> | number | null
     intervalsCount?: IntNullableFilter<"User"> | number | null
     workInterval?: IntNullableFilter<"User"> | number | null
+    taskBlockRound?: BoolNullableFilter<"User"> | boolean | null
     pomodoroSessions?: PomodoroSessionListRelationFilter
     tasks?: TaskListRelationFilter
     timeBlocks?: TimeBlockListRelationFilter
@@ -7666,6 +7681,7 @@ export namespace Prisma {
     breakInterval?: SortOrderInput | SortOrder
     intervalsCount?: SortOrderInput | SortOrder
     workInterval?: SortOrderInput | SortOrder
+    taskBlockRound?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -7686,6 +7702,7 @@ export namespace Prisma {
     breakInterval?: IntNullableWithAggregatesFilter<"User"> | number | null
     intervalsCount?: IntNullableWithAggregatesFilter<"User"> | number | null
     workInterval?: IntNullableWithAggregatesFilter<"User"> | number | null
+    taskBlockRound?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
   }
 
   export type TaskWhereInput = {
@@ -8042,6 +8059,7 @@ export namespace Prisma {
     breakInterval?: number | null
     intervalsCount?: number | null
     workInterval?: number | null
+    taskBlockRound?: boolean | null
     pomodoroSessions?: PomodoroSessionCreateNestedManyWithoutUserInput
     tasks?: TaskCreateNestedManyWithoutUserInput
     timeBlocks?: TimeBlockCreateNestedManyWithoutUserInput
@@ -8057,6 +8075,7 @@ export namespace Prisma {
     breakInterval?: number | null
     intervalsCount?: number | null
     workInterval?: number | null
+    taskBlockRound?: boolean | null
     pomodoroSessions?: PomodoroSessionUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskUncheckedCreateNestedManyWithoutUserInput
     timeBlocks?: TimeBlockUncheckedCreateNestedManyWithoutUserInput
@@ -8072,6 +8091,7 @@ export namespace Prisma {
     breakInterval?: NullableIntFieldUpdateOperationsInput | number | null
     intervalsCount?: NullableIntFieldUpdateOperationsInput | number | null
     workInterval?: NullableIntFieldUpdateOperationsInput | number | null
+    taskBlockRound?: NullableBoolFieldUpdateOperationsInput | boolean | null
     pomodoroSessions?: PomodoroSessionUpdateManyWithoutUserNestedInput
     tasks?: TaskUpdateManyWithoutUserNestedInput
     timeBlocks?: TimeBlockUpdateManyWithoutUserNestedInput
@@ -8087,6 +8107,7 @@ export namespace Prisma {
     breakInterval?: NullableIntFieldUpdateOperationsInput | number | null
     intervalsCount?: NullableIntFieldUpdateOperationsInput | number | null
     workInterval?: NullableIntFieldUpdateOperationsInput | number | null
+    taskBlockRound?: NullableBoolFieldUpdateOperationsInput | boolean | null
     pomodoroSessions?: PomodoroSessionUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskUncheckedUpdateManyWithoutUserNestedInput
     timeBlocks?: TimeBlockUncheckedUpdateManyWithoutUserNestedInput
@@ -8102,6 +8123,7 @@ export namespace Prisma {
     breakInterval?: number | null
     intervalsCount?: number | null
     workInterval?: number | null
+    taskBlockRound?: boolean | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -8114,6 +8136,7 @@ export namespace Prisma {
     breakInterval?: NullableIntFieldUpdateOperationsInput | number | null
     intervalsCount?: NullableIntFieldUpdateOperationsInput | number | null
     workInterval?: NullableIntFieldUpdateOperationsInput | number | null
+    taskBlockRound?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -8126,6 +8149,7 @@ export namespace Prisma {
     breakInterval?: NullableIntFieldUpdateOperationsInput | number | null
     intervalsCount?: NullableIntFieldUpdateOperationsInput | number | null
     workInterval?: NullableIntFieldUpdateOperationsInput | number | null
+    taskBlockRound?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type TaskCreateInput = {
@@ -8540,6 +8564,11 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type PomodoroSessionListRelationFilter = {
     every?: PomodoroSessionWhereInput
     some?: PomodoroSessionWhereInput
@@ -8585,6 +8614,7 @@ export namespace Prisma {
     breakInterval?: SortOrder
     intervalsCount?: SortOrder
     workInterval?: SortOrder
+    taskBlockRound?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -8603,6 +8633,7 @@ export namespace Prisma {
     breakInterval?: SortOrder
     intervalsCount?: SortOrder
     workInterval?: SortOrder
+    taskBlockRound?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -8615,6 +8646,7 @@ export namespace Prisma {
     breakInterval?: SortOrder
     intervalsCount?: SortOrder
     workInterval?: SortOrder
+    taskBlockRound?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -8689,16 +8721,19 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
   export type EnumPriorityNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.Priority | EnumPriorityFieldRefInput<$PrismaModel> | null
     in?: $Enums.Priority[] | ListEnumPriorityFieldRefInput<$PrismaModel> | null
     notIn?: $Enums.Priority[] | ListEnumPriorityFieldRefInput<$PrismaModel> | null
     not?: NestedEnumPriorityNullableFilter<$PrismaModel> | $Enums.Priority | null
-  }
-
-  export type BoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
   export type UserRelationFilter = {
@@ -8765,14 +8800,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumPriorityNullableFilter<$PrismaModel>
     _max?: NestedEnumPriorityNullableFilter<$PrismaModel>
-  }
-
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -9055,6 +9082,10 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
   export type PomodoroSessionUpdateManyWithoutUserNestedInput = {
     create?: XOR<PomodoroSessionCreateWithoutUserInput, PomodoroSessionUncheckedCreateWithoutUserInput> | PomodoroSessionCreateWithoutUserInput[] | PomodoroSessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: PomodoroSessionCreateOrConnectWithoutUserInput | PomodoroSessionCreateOrConnectWithoutUserInput[]
@@ -9161,10 +9192,6 @@ export namespace Prisma {
 
   export type NullableEnumPriorityFieldUpdateOperationsInput = {
     set?: $Enums.Priority | null
-  }
-
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
   }
 
   export type UserUpdateOneRequiredWithoutTasksNestedInput = {
@@ -9363,6 +9390,11 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -9449,16 +9481,19 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
   export type NestedEnumPriorityNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.Priority | EnumPriorityFieldRefInput<$PrismaModel> | null
     in?: $Enums.Priority[] | ListEnumPriorityFieldRefInput<$PrismaModel> | null
     notIn?: $Enums.Priority[] | ListEnumPriorityFieldRefInput<$PrismaModel> | null
     not?: NestedEnumPriorityNullableFilter<$PrismaModel> | $Enums.Priority | null
-  }
-
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
   export type NestedEnumPriorityNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -9469,14 +9504,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumPriorityNullableFilter<$PrismaModel>
     _max?: NestedEnumPriorityNullableFilter<$PrismaModel>
-  }
-
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -9716,6 +9743,7 @@ export namespace Prisma {
     breakInterval?: number | null
     intervalsCount?: number | null
     workInterval?: number | null
+    taskBlockRound?: boolean | null
     pomodoroSessions?: PomodoroSessionCreateNestedManyWithoutUserInput
     timeBlocks?: TimeBlockCreateNestedManyWithoutUserInput
   }
@@ -9730,6 +9758,7 @@ export namespace Prisma {
     breakInterval?: number | null
     intervalsCount?: number | null
     workInterval?: number | null
+    taskBlockRound?: boolean | null
     pomodoroSessions?: PomodoroSessionUncheckedCreateNestedManyWithoutUserInput
     timeBlocks?: TimeBlockUncheckedCreateNestedManyWithoutUserInput
   }
@@ -9792,6 +9821,7 @@ export namespace Prisma {
     breakInterval?: NullableIntFieldUpdateOperationsInput | number | null
     intervalsCount?: NullableIntFieldUpdateOperationsInput | number | null
     workInterval?: NullableIntFieldUpdateOperationsInput | number | null
+    taskBlockRound?: NullableBoolFieldUpdateOperationsInput | boolean | null
     pomodoroSessions?: PomodoroSessionUpdateManyWithoutUserNestedInput
     timeBlocks?: TimeBlockUpdateManyWithoutUserNestedInput
   }
@@ -9806,6 +9836,7 @@ export namespace Prisma {
     breakInterval?: NullableIntFieldUpdateOperationsInput | number | null
     intervalsCount?: NullableIntFieldUpdateOperationsInput | number | null
     workInterval?: NullableIntFieldUpdateOperationsInput | number | null
+    taskBlockRound?: NullableBoolFieldUpdateOperationsInput | boolean | null
     pomodoroSessions?: PomodoroSessionUncheckedUpdateManyWithoutUserNestedInput
     timeBlocks?: TimeBlockUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -9851,6 +9882,7 @@ export namespace Prisma {
     breakInterval?: number | null
     intervalsCount?: number | null
     workInterval?: number | null
+    taskBlockRound?: boolean | null
     pomodoroSessions?: PomodoroSessionCreateNestedManyWithoutUserInput
     tasks?: TaskCreateNestedManyWithoutUserInput
   }
@@ -9865,6 +9897,7 @@ export namespace Prisma {
     breakInterval?: number | null
     intervalsCount?: number | null
     workInterval?: number | null
+    taskBlockRound?: boolean | null
     pomodoroSessions?: PomodoroSessionUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskUncheckedCreateNestedManyWithoutUserInput
   }
@@ -9895,6 +9928,7 @@ export namespace Prisma {
     breakInterval?: NullableIntFieldUpdateOperationsInput | number | null
     intervalsCount?: NullableIntFieldUpdateOperationsInput | number | null
     workInterval?: NullableIntFieldUpdateOperationsInput | number | null
+    taskBlockRound?: NullableBoolFieldUpdateOperationsInput | boolean | null
     pomodoroSessions?: PomodoroSessionUpdateManyWithoutUserNestedInput
     tasks?: TaskUpdateManyWithoutUserNestedInput
   }
@@ -9909,6 +9943,7 @@ export namespace Prisma {
     breakInterval?: NullableIntFieldUpdateOperationsInput | number | null
     intervalsCount?: NullableIntFieldUpdateOperationsInput | number | null
     workInterval?: NullableIntFieldUpdateOperationsInput | number | null
+    taskBlockRound?: NullableBoolFieldUpdateOperationsInput | boolean | null
     pomodoroSessions?: PomodoroSessionUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -9949,6 +9984,7 @@ export namespace Prisma {
     breakInterval?: number | null
     intervalsCount?: number | null
     workInterval?: number | null
+    taskBlockRound?: boolean | null
     tasks?: TaskCreateNestedManyWithoutUserInput
     timeBlocks?: TimeBlockCreateNestedManyWithoutUserInput
   }
@@ -9963,6 +9999,7 @@ export namespace Prisma {
     breakInterval?: number | null
     intervalsCount?: number | null
     workInterval?: number | null
+    taskBlockRound?: boolean | null
     tasks?: TaskUncheckedCreateNestedManyWithoutUserInput
     timeBlocks?: TimeBlockUncheckedCreateNestedManyWithoutUserInput
   }
@@ -10021,6 +10058,7 @@ export namespace Prisma {
     breakInterval?: NullableIntFieldUpdateOperationsInput | number | null
     intervalsCount?: NullableIntFieldUpdateOperationsInput | number | null
     workInterval?: NullableIntFieldUpdateOperationsInput | number | null
+    taskBlockRound?: NullableBoolFieldUpdateOperationsInput | boolean | null
     tasks?: TaskUpdateManyWithoutUserNestedInput
     timeBlocks?: TimeBlockUpdateManyWithoutUserNestedInput
   }
@@ -10035,6 +10073,7 @@ export namespace Prisma {
     breakInterval?: NullableIntFieldUpdateOperationsInput | number | null
     intervalsCount?: NullableIntFieldUpdateOperationsInput | number | null
     workInterval?: NullableIntFieldUpdateOperationsInput | number | null
+    taskBlockRound?: NullableBoolFieldUpdateOperationsInput | boolean | null
     tasks?: TaskUncheckedUpdateManyWithoutUserNestedInput
     timeBlocks?: TimeBlockUncheckedUpdateManyWithoutUserNestedInput
   }

@@ -18,6 +18,7 @@ model User {
   breakInterval    Int?              @default(10) @map("break_interval")
   intervalsCount   Int?              @default(7) @map("intervals_count")
   workInterval     Int?              @default(50) @map("work_interval")
+  taskBlockRound   Boolean?          @default(false) @map("task_block_round")
   pomodoroSessions PomodoroSession[]
   tasks            Task[]
   timeBlocks       TimeBlock[]
